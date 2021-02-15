@@ -1,0 +1,32 @@
+<h2>Latest Exchange Rates</h2>
+
+<div class="row">
+  <p>Current system time and CPU utilization report: </p>
+  <div class="col s12 m4" *ngIf="utilize">
+    <div class="card-panel teal center">
+      <h5 class="white-text"> {{  utilize.now | date:'HH:mm:ss' }} | {{ utilize.rnNumb | number:'1.0-0'}} %</h5>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="objArr">
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th>Currency</th>
+        <th>Last price</th>
+        <th>Last Buy price</th>
+        <th>Last Sell price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of objArr" [routerLink]="['/currency', item[0]]">
+        <td>{{ item[0] }}</td>
+        <td>{{ item[1].symbol + " " + item[1].last }}</td>
+        <td>{{ item[1].symbol + " " + item[1].buy }}</td>
+        <td>{{ item[1].symbol + " " + item[1].sell }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p class="muted">Information obtained using blockchain.com/ticker</p>

@@ -1,0 +1,39 @@
+<a [routerLink]="['/']" class="right waves-effect waves-light btn">Back</a>
+
+<h2>Rates sorted by Exchange</h2>
+<h3>Currency Pair: BTC : USD</h3>
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card-panel teal">
+      <h5 class="white-text">BLOCKCHAIN</h5>
+      <span class="white-text" *ngIf="singleArr">
+        <h6>Last buy: {{ singleArr[1].buy }}</h6>
+        <h6>Last sell: {{ singleArr[1].sell }}</h6>
+        <h6>Last price: {{ singleArr[1].last }}</h6>
+      </span>
+    </div>
+  </div>
+  <div class="col s12 m4" *ngIf="exchArr?.result">
+    <div class="card-panel teal">
+      <h5 class="white-text">KRAKEN</h5>
+      <span class="white-text">
+        <!--.a[0],.b[0],.c[0]  -->
+        <h6>Last asking: {{ exchArr.result.XXBTZUSD.a[0] | number:'1.1-1' }}</h6>
+        <h6>Last bid: {{ exchArr.result.XXBTZUSD.a[0] | number:'1.1-1'}}</h6>
+        <h6>Last trade: {{ exchArr.result.XXBTZUSD.a[0] | number:'1.1-1'}}</h6>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Current system time and CPU utilization report: </h3>
+  <div class="col s12 m4" *ngIf="utilize">
+    <div class="card-panel teal">
+      <h5 class="white-text">Time | {{  utilize.now | date:'HH:mm:ss' }}</h5>
+      <span class="white-text">
+        <h6>{{ utilize.rnNumb | number:'1.0-0'}} %</h6>
+      </span>
+    </div>
+  </div>
+</div>
